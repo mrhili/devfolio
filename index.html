@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -336,7 +338,7 @@
             </div>
           </div>
         </div>
-        <div class="row">
+        <div class="row" id="insert-blog-posts">
 
           <div class="col-md-4">
             <div class="card card-blog">
@@ -356,7 +358,7 @@
               </div>
               <div class="card-footer">
                 <div class="post-author">
-                  <a href="#">
+                  <a href="https://mrhili.github.io/sunflower-land-roi-calculator/">
                     <img src="assets/img/sfl.jpg" alt="" class="avatar rounded-circle">
                     <span class="author">Mohamed Amine Mrhili</span>
                   </a>
@@ -371,6 +373,9 @@
       </div>
     </section><!-- End Blog Section -->
 
+
+        
+        
     <!-- ======= Contact Section ======= -->
     <section id="contact" class="paralax-mf footer-paralax bg-image sect-mt4 route" style="background-image: url(assets/img/overlay-bg.jpg)">
       <div class="overlay-mf"></div>
@@ -501,6 +506,49 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+  <script>
+  //document ready
+  $(document).ready(function(){
+    //get data from server
+    axios.get('https://dev.to/api/articles?username=mrhili')
+    .then(function (response) {
+      //handle success
+      console.log(response);
+      //loop through data
+      for(var i=0;i<response.data.length;i++){
+        //get data
+        if (response.data[i].type_of == "article"){
+          console.log(response.data[i].title);
+          var dt = new Date(response.data[i].published_at);
+
+        //var data = response.data[i];
+        //create html
+        var html = '<div class="col-md-4"><div class="card card-blog"><div class="card-img">'+
+                '<a href="'+response.data[i].url+'"><img src="'+response.data[i].social_image+'" alt="" class="img-fluid"></a>'+
+              '</div><div class="card-body"><div class="card-category-box"><div class="card-category">'+
+                    '<h6 class="category">Web Design</h6></div></div>'+
+                '<h3 class="card-title"><a target="_blank" href="'+response.data[i].url+'">"'+response.data[i].title+'"</a></h3>'+
+                '<p class="card-description">'+response.data[i].description+'</p></div>'+
+              '<div class="card-footer"><div class="post-author"><a href="'+response.data[i].url+'">'+
+              '<img src="'+response.data[i].user.profile_image+'" alt="" class="avatar rounded-circle"><span class="author">Mohamed Amine Mrhili</span></a></div>'+
+                '<div class="post-date"><span class="bi bi-clock"></span> '+dt.toLocaleDateString("en-US")+'</div></div></div></div>';
+
+        //append html to container
+        $('#insert-blog-posts').append(html);
+
+              }
+      }
+    })
+    .catch(function (error) {
+      //handle error
+      console.log(error);
+    });
+  });
+
+  </script>
 
 </body>
 
