@@ -523,13 +523,30 @@
         if (response.data[i].type_of == "article"){
           console.log(response.data[i].title);
           var dt = new Date(response.data[i].published_at);
+          var tag_list = '';
+          var add_style = '';
+          if (response.data[i].tag_list.length > 0){
+            for(var ti=0;ti<response.data[i].tag_list.length;ti++){
+              if (ti%2 ===0){
+                add_style ='style="background-color: navy;"';
+              }else{
+                add_style ='style="background-color: #00bcd4;"';
+              }
+              tag_list = tag_list + '<h6 class="category" '+add_style+'>'+response.data[i].tag_list[ti]+' </h6>';
+            }
+          }else{
+            tag_list = '<h6 class="category">No Tags</h6>';
+          }
+
+
+          
 
         //var data = response.data[i];
         //create html
         var html = '<div class="col-md-4"><div class="card card-blog"><div class="card-img">'+
                 '<a href="'+response.data[i].url+'"><img src="'+response.data[i].social_image+'" alt="" class="img-fluid"></a>'+
               '</div><div class="card-body"><div class="card-category-box"><div class="card-category">'+
-                    '<h6 class="category">Web Design</h6></div></div>'+
+                tag_list+'</div></div>'+
                 '<h3 class="card-title"><a target="_blank" href="'+response.data[i].url+'">"'+response.data[i].title+'"</a></h3>'+
                 '<p class="card-description">'+response.data[i].description+'</p></div>'+
               '<div class="card-footer"><div class="post-author"><a href="'+response.data[i].url+'">'+
