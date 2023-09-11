@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Mohamed Amine Mrhili  - Index</title>
+  <title>AmineOnline  - Index</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -33,7 +33,7 @@
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center justify-content-between">
 
-      <h1 class="logo"><a href="index.html">Amine M</a></h1>
+      <h1 class="logo"><a href="index.html">Amine Online</a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
@@ -104,7 +104,7 @@
                     </div>
                     <div class="col-sm-6 col-md-7">
                       <div class="about-info">
-                        <p><span class="title-s">Name</span> <span>Amine M</span></p>
+                        <p><span class="title-s">Name</span> <span>Amine Online</span></p>
                         <p><span class="title-s">Profile: </span> <span>Multifaceted</span></p>
                         <p><span class="title-s">Email@hotmail.com </span> is -> <span>mohamed-amine-mrhili</span></p>
                         <p><span class="title-s">Phone: +212</span> <span>6-44<i class="bi bi-hash"></i>48-98<i class="bi bi-hash"></i>46</span></p>
@@ -585,10 +585,10 @@
       <div class="row">
         <div class="col-sm-12">
           <div class="copyright-box">
-            <p class="copyright">&copy; Copyright <strong> Amine M</strong>. All Rights Reserved</p>
+            <p class="copyright">&copy; Copyright <strong> Amine Online</strong>. All Rights Reserved</p>
             <div class="credits">
 
-              Designed by <a href="#">Amine M</a>
+              Designed by <a href="#">Amine Online</a>
             </div>
           </div>
         </div>
@@ -653,7 +653,7 @@
                 '<h3 class="card-title"><a target="_blank" href="'+response.data[i].url+'">"'+response.data[i].title+'"</a></h3>'+
                 '<p class="card-description">'+response.data[i].description+'</p></div>'+
               '<div class="card-footer"><div class="post-author"><a href="'+response.data[i].url+'">'+
-              '<img src="'+response.data[i].user.profile_image+'" alt="" class="avatar rounded-circle"><span class="author">Amine M</span></a></div>'+
+              '<img src="'+response.data[i].user.profile_image+'" alt="" class="avatar rounded-circle"><span class="author">Amine Online</span></a></div>'+
                 '<div class="post-date"><span class="bi bi-clock"></span> '+dt.toLocaleDateString("en-US")+'</div></div></div></div>';
 
         //append html to container
@@ -664,7 +664,37 @@
     })
     .catch(function (error) {
       //handle error
+      var html = '<div class="col-md-4">'+
+            '<div class="card card-blog">'+
+              '<div class="card-img">'+
+                '<a href="sfl-project-detail.html"><img src="assets/img/error.png" alt="" class="img-fluid"></a>'+
+                '</div>'+
+                '<div class="card-body">'+
+                  '<div class="card-category-box">'+
+                    '<div class="card-category">'+
+                      '<h6 class="category">Error</h6>'+
+                      '</div>'+
+                      '</div>'+
+                      '<h3 class="card-title"><a target="_blank" href="sfl-project-detail.html">Dynamic blog post can\'t be fetched</a></h3>'+
+                      '<p class="card-description">'+
+                        'Due to connection error between you and the api.'+
+                        '</p>'+
+                        '</div>'+
+                        '<div class="card-footer">'+
+                          '<div class="post-author">'+
+                            '<a href="https://dev.to/mrhili">'+
+                              '<img src="assets/img/sfl.jpg" alt="" class="avatar rounded-circle">'+
+                              '<span class="author"></span>'+
+                              '</a>'+
+                              '</div>'+
+                              '<div class="post-date">'+
+                                '<span class="bi bi-clock"></span> Now'+
+                                '</div>'+
+                                '</div>'+
+                                '</div>'+
+                                '</div>'
       console.log(error);
+      $('#insert-blog-posts').append(html);
     });
   });
 
